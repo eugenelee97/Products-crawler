@@ -12,7 +12,7 @@ ssl._create_default_https_context = ssl._create_unverified_context
 response = urllib.request.urlopen('https://www.python.org')
 headers = {'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/85.0.4183.83 Safari/537.36'}
 
-# Command Line Passing Argument
+# Command Line Passing Argument, python readURL.py keyword pagenumber
 if len(sys.argv) < 3:
     sys.exit()
 keyword = sys.argv[1]
@@ -24,10 +24,9 @@ url = 'https://shopee.com.my/search?keyword={}&page={}&sortBy=relevancy'.format(
 options = webdriver.ChromeOptions()
 options.add_argument('disable-gpu')
 
-
 driver = webdriver.Chrome('/Applications/chromedriver', options=options)
-driver.implicitly_wait(5)
 driver.get(url)
+driver.implicitly_wait(5)
 
 # Select language 
 selectButton = driver.find_element_by_xpath("//*[@id='modal']/div[1]/div[1]/div/div[3]/div[1]/button")
@@ -96,4 +95,5 @@ for link in item_Class:
     df = pd.DataFrame(product_list, columns=['Product name', 'Prices', 'Seller Name', 'URL', 'Product Code', 'IMG'])
     df.to_csv(keyword + '_' + str(pageNumber) +'.csv', encoding="utf-8-sig")
 
-   
+    driver.close()
+    driver.quit()
