@@ -13,7 +13,7 @@ my_upload_url = 'https://ngwx.bizmeka.com/myoffice/ezBoardSTD/NewBoardItem_Cross
 
 # Read Product code+url from csv file
 filepath = r'./' + filename + '.csv'
-data = pd.read_csv(filepath, encoding = 'utf-8')
+data = pd.read_csv(filepath, encoding = 'utf-8', keep_default_na=False)
 item_url = data [["Product Code","URL"]]
 item_url_list = item_url.values.tolist()
 
@@ -46,17 +46,22 @@ driver.implicitly_wait(5)
 
 
 for code,item in item_url_list:
-    # Upload Posts, real xpath = //*[@id="menu"]/ul/li[1]/span
+    ## Quit if there is no more products
+    if not code : 
+        break
+    # Upload Posts, real xpath = //*[@id="menu"]/ul/li[1]/span, test xpath = //*[@id="temp_board"]/span
     driver.find_element_by_id("txtTitle").send_keys(code)
     driver.switch_to.frame("message") 
     driver.find_element_by_xpath("/html/body/div[1]/div[4]/ul/li[2]/a/span").click()
     driver.find_element_by_class_name("kk_htmlContents").clear()
     driver.find_element_by_class_name("kk_htmlContents").send_keys(item)
     driver.switch_to.default_content()
-    driver.find_element_by_xpath('//*[@id="temp_board"]/span').click()
+    driver.find_element_by_xpath('//*[@id="menu"]/ul/li[1]/span').click()
     # Close Alert
     alert = driver.switch_to.alert
     alert.accept()
+
+    print(str(item_url_list.index([code,item])) + ' : has been uploaded')
 
 driver.close()
 driver.quit()

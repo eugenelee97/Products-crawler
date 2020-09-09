@@ -95,5 +95,6 @@ for link in item_Class:
     df = pd.DataFrame(product_list, columns=['Product name', 'Prices', 'Seller Name', 'URL', 'Product Code', 'IMG'])
     df.to_csv(keyword + '_' + str(pageNumber) +'.csv', encoding="utf-8-sig")
 
-    driver.close()
-    driver.quit()
+ 
+driver.close()
+driver.quit()
