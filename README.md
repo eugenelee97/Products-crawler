@@ -9,12 +9,12 @@ This is personal project for personal uses, still wroking on this project.
 Results will be exporting to csv file. 
 
 #### CheckURL
-- Search for duplicated url on groupware website, 
+- Simple Macro which searchs for duplicated url on groupware website, 
 comparing URLs in csv to all URLs on dashboard people'd uploaded before. 
 
 
 #### UploadURL
-- Upload all those unposted URL I want to uploard with given product's code on the dashboard
+- Simple Macro that upload all those unposted URL I want to uploard with given product's code on the dashboard
 
 
 ## Installation
