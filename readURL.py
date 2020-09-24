@@ -62,8 +62,8 @@ for link in item_Class:
 
     # Url(url, picture url) of Items
     item_url = link.get_attribute("href")
-    item_img = link.find_element_by_class_name("_1T9dHf._3XaILN").get_attribute("src").replace('_tn', '')
- 
+    item_img = link.find_element_by_class_name("_1T9dHf.V1Fpl5").get_attribute("src").replace('_tn', '')
+    
     # Split url to get item name, shop id, item id
     parts = urlparse(item_url)
     meta = parts.path.split('-i.')

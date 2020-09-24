@@ -29,7 +29,7 @@ driver.implicitly_wait(5)
 
 # Automatic login
 driver.find_element_by_name("TextUserID").send_keys("2007209123")
-driver.find_element_by_name("TextPassword").send_keys("")
+driver.find_element_by_name("TextPassword").send_keys("!1q2w3e4r")
 
 driver.find_element_by_xpath('//*[@id="LoginButton"]').click()
 
@@ -46,6 +46,9 @@ driver.get(my_searchbar_url)
 driver.implicitly_wait(5)
 
 for item in code_list :
+    ## Quit if there is no more products
+    if not item : 
+        break
     driver.find_element_by_id('txtTitle').clear()
     driver.find_element_by_id('txtTitle').send_keys(item)
     driver.find_element_by_xpath('/html/body/table[1]/tbody/tr[5]/td/a[2]/span').click()

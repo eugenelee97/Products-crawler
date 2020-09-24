@@ -28,7 +28,7 @@ driver.implicitly_wait(5)
 
 # Automatic login
 driver.find_element_by_name("TextUserID").send_keys("2007209123")
-driver.find_element_by_name("TextPassword").send_keys("")
+driver.find_element_by_name("TextPassword").send_keys("!1q2w3e4r")
 
 driver.find_element_by_xpath('//*[@id="LoginButton"]').click()
 
