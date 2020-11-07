@@ -62,7 +62,7 @@ for link in item_Class:
 
     # Url(url, picture url) of Items
     item_url = link.get_attribute("href")
-    item_img = link.find_element_by_class_name("_1T9dHf.V1Fpl5").get_attribute("src").replace('_tn', '')
+    #item_img = link.find_element_by_class_name("_1T9dHf.V1Fpl5").get_attribute("src").replace('_tn', '')
     
     # Split url to get item name, shop id, item id
     parts = urlparse(item_url)
@@ -89,10 +89,10 @@ for link in item_Class:
         item_prices = item_prices[0].text
 
     # Add all to product_list array
-    product_list.append([item_name, item_prices, seller_name, item_url, product_code, f'=HYPERLINK(\"{item_img}\")'])
+    product_list.append([item_name, item_prices, seller_name, item_url, product_code]) #f'=HYPERLINK(\"{item_img}\")'
 
     # Send dataframe to csv
-    df = pd.DataFrame(product_list, columns=['Product name', 'Prices', 'Seller Name', 'URL', 'Product Code', 'IMG'])
+    df = pd.DataFrame(product_list, columns=['Product name', 'Prices', 'Seller Name', 'URL', 'Product Code']) #'IMG'
     df.to_csv(keyword + '_' + str(pageNumber) +'.csv', encoding="utf-8-sig")
 
  
